@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstAnalyzer", "MyFirstAnalyzer\MyFirstAnalyzer\MyFirstAnalyzer.csproj", "{ACF6A95B-DC87-48B8-88B3-2E1964CAFB20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstAnalyzer.Test", "MyFirstAnalyzer\MyFirstAnalyzer.Test\MyFirstAnalyzer.Test.csproj", "{5386F2CD-987C-4EEF-88FE-9142BB2DE0BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACF6A95B-DC87-48B8-88B3-2E1964CAFB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACF6A95B-DC87-48B8-88B3-2E1964CAFB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACF6A95B-DC87-48B8-88B3-2E1964CAFB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACF6A95B-DC87-48B8-88B3-2E1964CAFB20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5386F2CD-987C-4EEF-88FE-9142BB2DE0BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5386F2CD-987C-4EEF-88FE-9142BB2DE0BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5386F2CD-987C-4EEF-88FE-9142BB2DE0BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5386F2CD-987C-4EEF-88FE-9142BB2DE0BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9DEEC6C-C56C-4BC1-A77A-35E6DA1F9F13}
+	EndGlobalSection
+EndGlobal
