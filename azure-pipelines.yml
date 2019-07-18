@@ -1,0 +1,38 @@
+name: 0.1$(Rev:.r)
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: build
+    arguments: '-c Release'
+    projects: |
+      Lindemann.Analyzers/Lindemann.Analyzers.csproj
+      Lindemann.Analyzers.Tests/Lindemann.Analyzsers.Tests.csproj
+  displayName: 'Build .NET Core Solution'
+  
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    arguments: '-c Release'
+    nobuild: true
+  displayName: 'Test .NET Core Solution'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: pack
+    nobuild: true
+    configurationToPack: 'Release'
+    packagesToPack: 'Lindemann.Analyzers/Lindemann.Analyzers.csproj'
+    versioningScheme: byBuildNumber
+  displayName: 'Pack Lindemann.Analyzers'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    ArtifactName: 'Lindemann.Analyzers'
+  displayName: 'Publish Build Artifacts'
