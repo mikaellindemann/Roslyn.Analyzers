@@ -1,3 +1,4 @@
+using Lindemann.Analyzers.Tests.Helpers;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace TestHelper
+namespace Lindemann.Analyzers.Tests.Helpers
 {
     /// <summary>
     /// Superclass of all Unit Tests for DiagnosticAnalyzers

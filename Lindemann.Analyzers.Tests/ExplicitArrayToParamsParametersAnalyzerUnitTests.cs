@@ -1,10 +1,10 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using Lindemann.Analyzers.Tests.Helpers;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Diagnostics;
-using TestHelper;
 using Xunit;
 
-namespace MyFirstAnalyzer.Test
+namespace Lindemann.Analyzers.Tests
 {
     public class ExplicitArrayToParamsParametersAnalyzerUnitTests : CodeFixVerifier
     {
@@ -23,8 +23,6 @@ namespace MyFirstAnalyzer.Test
         [InlineData(LocalVariableNotTargeted)]
         [InlineData(IntParamsFixedArray)]
         [InlineData(RequiredParameterFollowedByParamsFixed)]
-        [InlineData(RefactorWouldCallOtherMethod)]
-        [InlineData(RefactorWouldCallOtherMethod2)]
         public void WhenTestCodeIsValidNoDiagnosticIsTriggered(string testCode)
         {
             VerifyCSharpDiagnostic(testCode);
@@ -34,7 +32,7 @@ namespace MyFirstAnalyzer.Test
         [InlineData(NewImplicitlyTypedInt32Array, NewImplicitlyTypedInt32ArrayInputExpression, IntParamsFixedArray, 14, 16)]
         [InlineData(NewInt32Array, NewInt32ArrayInputExpression, IntParamsFixedArray, 14, 16)]
         [InlineData(RequiredParameterFollowedByParams, RequiredParameterFollowedByParamsInputExpression, RequiredParameterFollowedByParamsFixed, 14, 19)]
-        [InlineData(CallingExternalParamsMethodWithImplicitTypedArray, CallingExternalParamsMethodWithImplicitTypedArrayInputExpression, CallingExternalParamsMethodWithImplicitTypedArrayFixed, 14, 19)]
+        [InlineData(CallingExternalParamsMethodWithImplicitTypedArray, CallingExternalParamsMethodWithImplicitTypedArrayInputExpression, CallingExternalParamsMethodWithImplicitTypedArrayFixed, 10, 42)]
         public void WhenDiagnosticIsRaisedFixUpdatesCode(
             string input,
             string inputExpression,
@@ -215,64 +213,6 @@ namespace ConsoleApp1
 }
 ";
 
-        private const string RefactorWouldCallOtherMethod = @"
-using System;
-
-namespace ConsoleApp1
-{
-    internal static class Program
-    {
-        internal static void Main(string[] args)
-        {
-            const int i = 1;
-            const int j = 3;
-            const int k = (2 * i) + j;
-
-            Do(new[] { i, j, k });
-        }
-
-        internal static void Do(params int[] xs)
-        {
-            Console.WriteLine(xs);
-        }
-
-        internal static void Do(int a, int b, int c)
-        {
-            Console.WriteLine(a + b + c);
-        }
-    }
-}
-";
-
-        private const string RefactorWouldCallOtherMethod2 = @"
-using System;
-
-namespace ConsoleApp1
-{
-    internal static class Program
-    {
-        internal static void Main(string[] args)
-        {
-            const int i = 1;
-            const int j = 3;
-            const int k = (2 * i) + j;
-
-            Do(new[] { i, j, k });
-        }
-
-        internal static void Do(params int[] xs)
-        {
-            Console.WriteLine(xs);
-        }
-
-        internal static void Do(int a, params int[] xs)
-        {
-            Console.WriteLine(a + b + c);
-        }
-    }
-}
-";
-
         private const string CallingExternalParamsMethodWithImplicitTypedArray = @"
 using System;
 
@@ -282,17 +222,13 @@ namespace ConsoleApp1
     {
         internal static void Main(string[] args)
         {
-            const int i = 1;
-            const int j = 3;
-            const int k = (2 * i) + j;
-
-            Console.WriteLine(""%d %d %d"", new[] { (object)i, (object)j, (object)k });
+            throw new AggregateException(new[] { new Exception(), new Exception() });
         }
     }
 }
 ";
 
-        private const string CallingExternalParamsMethodWithImplicitTypedArrayInputExpression = @"new[] { (object)i, (object)j, (object)k }";
+        private const string CallingExternalParamsMethodWithImplicitTypedArrayInputExpression = @"new[] { new Exception(), new Exception() }";
 
         private const string CallingExternalParamsMethodWithImplicitTypedArrayFixed = @"
 using System;
@@ -303,11 +239,7 @@ namespace ConsoleApp1
     {
         internal static void Main(string[] args)
         {
-            const int i = 1;
-            const int j = 3;
-            const int k = (2 * i) + j;
-
-            Console.WriteLine(""%d %d %d"", (object)i, (object)j, (object)k);
+            throw new AggregateException(new Exception(), new Exception());
         }
     }
 }

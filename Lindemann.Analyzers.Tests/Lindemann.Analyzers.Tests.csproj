@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyFirstAnalyzer\MyFirstAnalyzer.csproj" />
+    <ProjectReference Include="..\Lindemann.Analyzers\Lindemann.Analyzers.csproj" />
   </ItemGroup>
 
 </Project>

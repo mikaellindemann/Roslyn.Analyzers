@@ -10,7 +10,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 
-namespace MyFirstAnalyzer
+namespace Lindemann.Analyzers
 {
     [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(ExplicitArrayToParamsParametersAnalyzerCodeFixProvider)), Shared]
     public class ExplicitArrayToParamsParametersAnalyzerCodeFixProvider : CodeFixProvider

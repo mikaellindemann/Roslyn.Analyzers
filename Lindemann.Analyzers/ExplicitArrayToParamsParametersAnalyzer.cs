@@ -4,7 +4,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using System.Collections.Immutable;
 
-namespace MyFirstAnalyzer
+namespace Lindemann.Analyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ExplicitArrayToParamsParametersAnalyzer : ParamsParametersAnalyzerBase
@@ -22,6 +22,7 @@ namespace MyFirstAnalyzer
 
         public override void Initialize(AnalysisContext context)
         {
+
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
             context.EnableConcurrentExecution();
             context.RegisterSyntaxNodeAction(AnalyzeImplicitArrayCreationExpressionNode, SyntaxKind.ImplicitArrayCreationExpression);
@@ -32,12 +33,8 @@ namespace MyFirstAnalyzer
         {
             var es = (ImplicitArrayCreationExpressionSyntax)context.Node;
 
-            if (!IsCallingParamsMethod(context.SemanticModel, es, context.CancellationToken, out var calledMethod, out var als))
-            {
-                return;
-            }
-
-            if (WouldCallOverload(context.SemanticModel, calledMethod, als, es.Initializer, context.CancellationToken))
+            if (!(IsCallingParamsMethod(context.SemanticModel, es, context.CancellationToken)
+                || IsCallingParamsConstructor(context.SemanticModel, es, context.CancellationToken)))
             {
                 return;
             }
@@ -49,12 +46,8 @@ namespace MyFirstAnalyzer
         {
             var es = (ArrayCreationExpressionSyntax)context.Node;
 
-            if (!IsCallingParamsMethod(context.SemanticModel, es, context.CancellationToken, out var calledMethod, out var als))
-            {
-                return;
-            }
-
-            if (WouldCallOverload(context.SemanticModel, calledMethod, als, es.Initializer, context.CancellationToken))
+            if (!(IsCallingParamsMethod(context.SemanticModel, es, context.CancellationToken)
+                || IsCallingParamsConstructor(context.SemanticModel, es, context.CancellationToken)))
             {
                 return;
             }

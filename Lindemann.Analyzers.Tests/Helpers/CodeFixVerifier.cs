@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using Xunit;
 
-namespace TestHelper
+namespace Lindemann.Analyzers.Tests.Helpers
 {
     /// <summary>
     /// Superclass of all Unit tests made for diagnostics with codefixes.

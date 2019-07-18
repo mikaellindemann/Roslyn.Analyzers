@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -7,18 +7,18 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>MyFirstAnalyzer</PackageId>
-    <PackageVersion>1.0.0.0</PackageVersion>
-    <Authors>mikae</Authors>
-    <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>
-    <PackageProjectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</PackageProjectUrl>
-    <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
-    <RepositoryUrl>http://REPOSITORY_URL_HERE_OR_DELETE_THIS_LINE</RepositoryUrl>
+    <PackageId>Lindemann.Analyzers</PackageId>
+    <PackageVersion>0.1.0.0</PackageVersion>
+    <Authors>Mikael Lindemann</Authors>
+    <!--<PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>-->
+    <PackageProjectUrl>https://github.com/mikaellindemann/Roslyn.Analyzers</PackageProjectUrl>
+    <!--<PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
+    <!--<RepositoryUrl>http://REPOSITORY_URL_HERE_OR_DELETE_THIS_LINE</RepositoryUrl>-->
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Description>MyFirstAnalyzer</Description>
-    <PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>
+    <Description>Contains simple analyzers that I didn't find in FxCopAnalyzers and Roslynator.</Description>
+    <PackageReleaseNotes>Added the array creation to params parameter analyzer and code fix to remove redundant code.</PackageReleaseNotes>
     <Copyright>Copyright</Copyright>
-    <PackageTags>MyFirstAnalyzer, analyzers</PackageTags>
+    <PackageTags>Lindemann.Analyzers, analyzers</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
   </PropertyGroup>
 
