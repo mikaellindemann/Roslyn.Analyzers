@@ -61,7 +61,7 @@ namespace Lindemann.Analyzers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Make constant.
+        ///   Looks up a localized string similar to Redundant array creation in params position..
         /// </summary>
         public static string MD0001AnalyzerDescription {
             get {
@@ -70,7 +70,7 @@ namespace Lindemann.Analyzers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;{0}&apos; can be made constant.
+        ///   Looks up a localized string similar to Simplify &apos;{0}&apos;.
         /// </summary>
         public static string MD0001AnalyzerMessageFormat {
             get {
@@ -79,7 +79,7 @@ namespace Lindemann.Analyzers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Variable can be made constant.
+        ///   Looks up a localized string similar to Simplify array creation in params parameter.
         /// </summary>
         public static string MD0001AnalyzerTitle {
             get {
@@ -88,29 +88,29 @@ namespace Lindemann.Analyzers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Something about using new array expression in params position..
+        ///   Looks up a localized string similar to Redundant implicitly typed array creation in params position..
         /// </summary>
-        public static string MD1001AnalyzerDescription {
+        public static string MD0002AnalyzerDescription {
             get {
-                return ResourceManager.GetString("MD1001AnalyzerDescription", resourceCulture);
+                return ResourceManager.GetString("MD0002AnalyzerDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Simplify &apos;{0}&apos;.
         /// </summary>
-        public static string MD1001AnalyzerMessageFormat {
+        public static string MD0002AnalyzerMessageFormat {
             get {
-                return ResourceManager.GetString("MD1001AnalyzerMessageFormat", resourceCulture);
+                return ResourceManager.GetString("MD0002AnalyzerMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simplify params parameter.
+        ///   Looks up a localized string similar to Simplify implicitly typed array creation in params parameter.
         /// </summary>
-        public static string MD1001AnalyzerTitle {
+        public static string MD0002AnalyzerTitle {
             get {
-                return ResourceManager.GetString("MD1001AnalyzerTitle", resourceCulture);
+                return ResourceManager.GetString("MD0002AnalyzerTitle", resourceCulture);
             }
         }
     }

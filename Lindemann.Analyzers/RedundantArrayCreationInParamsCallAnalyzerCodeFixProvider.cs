@@ -12,19 +12,18 @@ using System;
 
 namespace Lindemann.Analyzers
 {
-    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(ExplicitArrayToParamsParametersAnalyzerCodeFixProvider)), Shared]
-    public class ExplicitArrayToParamsParametersAnalyzerCodeFixProvider : CodeFixProvider
+    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(RedundantArrayCreationInParamsCallAnalyzerCodeFixProvider)), Shared]
+    public class RedundantArrayCreationInParamsCallAnalyzerCodeFixProvider : CodeFixProvider
     {
-        private readonly string title = Resources.MD1001AnalyzerTitle;
+        private readonly string title = Resources.MD0001AnalyzerTitle;
 
         public sealed override ImmutableArray<string> FixableDiagnosticIds
         {
-            get { return ImmutableArray.Create(ExplicitArrayToParamsParametersAnalyzer.DiagnosticId); }
+            get { return ImmutableArray.Create(RedundantArrayCreationInParamsCallAnalyzer.RedundantArrayCreationDiagnosticId); }
         }
 
         public sealed override FixAllProvider GetFixAllProvider()
         {
-            // See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/FixAllProvider.md for more information on Fix All Providers
             return WellKnownFixAllProviders.BatchFixer;
         }
 
@@ -56,23 +55,14 @@ namespace Lindemann.Analyzers
 
             var argListWithoutParamsArray = argList.Arguments.Remove(arg);
 
-            ArgumentListSyntax resultingArgs;
-            if (newArray is ImplicitArrayCreationExpressionSyntax iaces)
-            {
-                resultingArgs = SyntaxFactory.ArgumentList(
-                    argListWithoutParamsArray
-                        .AddRange(iaces.Initializer.Expressions.Select(SyntaxFactory.Argument)));
-            }
-            else if (newArray is ArrayCreationExpressionSyntax aces)
-            {
-                resultingArgs = SyntaxFactory.ArgumentList(
-                    argListWithoutParamsArray
-                        .AddRange(aces.Initializer.Expressions.Select(SyntaxFactory.Argument)));
-            }
-            else
+            if (!(newArray is ArrayCreationExpressionSyntax aces))
             {
                 throw new ArgumentException("invalid type of array creation expression.", nameof(newArray));
             }
+
+            ArgumentListSyntax resultingArgs = SyntaxFactory.ArgumentList(
+                argListWithoutParamsArray
+                    .AddRange(aces.Initializer.Expressions.Select(SyntaxFactory.Argument)));
 
             // Replace the old local declaration with the new local declaration.
             var oldRoot = await document.GetSyntaxRootAsync(cancellationToken);
