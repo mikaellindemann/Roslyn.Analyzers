@@ -10,8 +10,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: build
-    arguments: '-c Release'
-    versioningScheme: byBuildNumber
+    arguments: "-c Release /p:PackageVersion=$(Build.BuildNumber)"
   displayName: 'Build .NET Core Solution'
   
 - task: DotNetCoreCLI@2
@@ -22,14 +21,12 @@ steps:
     versioningScheme: byBuildNumber
   displayName: 'Test .NET Core Solution'
 
-- task: DotNetCoreCLI@2
+- task: CopyFiles@2
   inputs:
-    command: pack
-    nobuild: true
-    configurationToPack: 'Release'
-    packagesToPack: 'Lindemann.Analyzers/Lindemann.Analyzers.csproj'
-    versioningScheme: byBuildNumber
-  displayName: 'Pack Lindemann.Analyzers'
+    SourceFolder: '$(Build.SourcesDirectory)/Lindemann.Analyzers/bin/Release/'
+    Contents: '*$(Build.BuildNumber).nupkg'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy package to staging directory.'
 
 - task: PublishBuildArtifacts@1
   inputs:
