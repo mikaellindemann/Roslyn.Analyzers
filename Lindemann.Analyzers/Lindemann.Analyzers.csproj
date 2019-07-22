@@ -10,7 +10,7 @@
     <PackageId>Lindemann.Analyzers</PackageId>
     <PackageVersion>0.1.0.0</PackageVersion>
     <Authors>Mikael Lindemann</Authors>
-    <!--<PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>-->
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/mikaellindemann/Roslyn.Analyzers</PackageProjectUrl>
     <!--<PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
     <!--<RepositoryUrl>http://REPOSITORY_URL_HERE_OR_DELETE_THIS_LINE</RepositoryUrl>-->
