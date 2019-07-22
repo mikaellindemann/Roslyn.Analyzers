@@ -6,16 +6,16 @@ using Xunit;
 
 namespace Lindemann.Analyzers.Tests
 {
-    public class ExplicitArrayToParamsParametersAnalyzerUnitTests : CodeFixVerifier
+    public class RedundantImplicitArrayCreationInParamsCallAnalyzerUnitTests : CodeFixVerifier
     {
         protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
         {
-            return new ExplicitArrayToParamsParametersAnalyzer();
+            return new RedundantImplicitArrayCreationInParamsCallAnalyzer();
         }
 
         protected override CodeFixProvider GetCSharpCodeFixProvider()
         {
-            return new ExplicitArrayToParamsParametersAnalyzerCodeFixProvider();
+            return new RedundantImplicitArrayCreationInParamsCallAnalyzerCodeFixProvider();
         }
 
         [Theory]
@@ -30,7 +30,6 @@ namespace Lindemann.Analyzers.Tests
 
         [Theory]
         [InlineData(NewImplicitlyTypedInt32Array, NewImplicitlyTypedInt32ArrayInputExpression, IntParamsFixedArray, 14, 16)]
-        [InlineData(NewInt32Array, NewInt32ArrayInputExpression, IntParamsFixedArray, 14, 16)]
         [InlineData(RequiredParameterFollowedByParams, RequiredParameterFollowedByParamsInputExpression, RequiredParameterFollowedByParamsFixed, 14, 19)]
         [InlineData(CallingExternalParamsMethodWithImplicitTypedArray, CallingExternalParamsMethodWithImplicitTypedArrayInputExpression, CallingExternalParamsMethodWithImplicitTypedArrayFixed, 10, 42)]
         public void WhenDiagnosticIsRaisedFixUpdatesCode(
@@ -42,8 +41,8 @@ namespace Lindemann.Analyzers.Tests
         {
             var expected = new DiagnosticResult
             {
-                Id = ExplicitArrayToParamsParametersAnalyzer.DiagnosticId,
-                Message = string.Format(new LocalizableResourceString(nameof(Resources.MD1001AnalyzerMessageFormat), Resources.ResourceManager, typeof(Resources)).ToString(), inputExpression),
+                Id = RedundantImplicitArrayCreationInParamsCallAnalyzer.RedundantImplicitArrayCreationDiagnosticId,
+                Message = string.Format(new LocalizableResourceString(nameof(Resources.MD0002AnalyzerMessageFormat), Resources.ResourceManager, typeof(Resources)).ToString(), inputExpression),
                 Severity = DiagnosticSeverity.Warning,
                 Locations =
                    new[] {
@@ -107,32 +106,6 @@ namespace ConsoleApp1
 ";
 
         private const string NewImplicitlyTypedInt32ArrayInputExpression = @"new[] { i, j, k }";
-
-        private const string NewInt32Array = @"
-using System;
-
-namespace ConsoleApp1
-{
-    internal static class Program
-    {
-        internal static void Main(string[] args)
-        {
-            const int i = 1;
-            const int j = 3;
-            const int k = (2 * i) + j;
-
-            Do(new int[] { i, j, k });
-        }
-
-        internal static void Do(params int[] xs)
-        {
-            Console.WriteLine(xs);
-        }
-    }
-}
-";
-
-        private const string NewInt32ArrayInputExpression = @"new int[] { i, j, k }";
 
         private const string IntParamsFixedArray = @"
 using System;

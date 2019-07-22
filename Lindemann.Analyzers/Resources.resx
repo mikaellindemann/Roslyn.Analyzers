@@ -118,24 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MD0001AnalyzerDescription" xml:space="preserve">
-    <value>Make constant</value>
-    <comment>An optional longer localizable description of the diagnostic.</comment>
+    <value>Redundant array creation in params position.</value>
   </data>
   <data name="MD0001AnalyzerMessageFormat" xml:space="preserve">
-    <value>'{0}' can be made constant</value>
-    <comment>The format-able message the diagnostic displays.</comment>
-  </data>
-  <data name="MD0001AnalyzerTitle" xml:space="preserve">
-    <value>Variable can be made constant</value>
-    <comment>The title of the diagnostic.</comment>
-  </data>
-  <data name="MD1001AnalyzerDescription" xml:space="preserve">
-    <value>Something about using new array expression in params position.</value>
-  </data>
-  <data name="MD1001AnalyzerMessageFormat" xml:space="preserve">
     <value>Simplify '{0}'</value>
   </data>
-  <data name="MD1001AnalyzerTitle" xml:space="preserve">
-    <value>Simplify params parameter</value>
+  <data name="MD0001AnalyzerTitle" xml:space="preserve">
+    <value>Simplify array creation in params parameter</value>
+  </data>
+  <data name="MD0002AnalyzerDescription" xml:space="preserve">
+    <value>Redundant implicitly typed array creation in params position.</value>
+  </data>
+  <data name="MD0002AnalyzerMessageFormat" xml:space="preserve">
+    <value>Simplify '{0}'</value>
+  </data>
+  <data name="MD0002AnalyzerTitle" xml:space="preserve">
+    <value>Simplify implicitly typed array creation in params parameter</value>
   </data>
 </root>
