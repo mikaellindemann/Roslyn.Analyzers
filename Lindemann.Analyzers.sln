@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lindemann.Analyzers", "Lind
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lindemann.Analyzers.Tests", "Lindemann.Analyzers.Tests\Lindemann.Analyzers.Tests.csproj", "{5386F2CD-987C-4EEF-88FE-9142BB2DE0BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{24E37449-B2FF-4C2A-9CB9-F40E0CF08873}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{CA24F4FF-1794-465D-9F4B-93E7B1E5EC31}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,14 +21,6 @@ Global
 		{5386F2CD-987C-4EEF-88FE-9142BB2DE0BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5386F2CD-987C-4EEF-88FE-9142BB2DE0BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5386F2CD-987C-4EEF-88FE-9142BB2DE0BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24E37449-B2FF-4C2A-9CB9-F40E0CF08873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24E37449-B2FF-4C2A-9CB9-F40E0CF08873}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24E37449-B2FF-4C2A-9CB9-F40E0CF08873}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24E37449-B2FF-4C2A-9CB9-F40E0CF08873}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA24F4FF-1794-465D-9F4B-93E7B1E5EC31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA24F4FF-1794-465D-9F4B-93E7B1E5EC31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA24F4FF-1794-465D-9F4B-93E7B1E5EC31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA24F4FF-1794-465D-9F4B-93E7B1E5EC31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
