@@ -24,7 +24,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/Lindemann.Analyzers/bin/Release/'
-    Contents: '*.nupkg'
+    Contents: '*$(Build.BuildNumber).nupkg'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy package to staging directory.'
 
