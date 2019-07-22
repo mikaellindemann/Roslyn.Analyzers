@@ -11,9 +11,7 @@ steps:
   inputs:
     command: build
     arguments: '-c Release'
-    projects: |
-      Lindemann.Analyzers/Lindemann.Analyzers.csproj
-      Lindemann.Analyzers.Tests/Lindemann.Analyzsers.Tests.csproj
+    versioningScheme: byBuildNumber
   displayName: 'Build .NET Core Solution'
   
 - task: DotNetCoreCLI@2
@@ -21,6 +19,7 @@ steps:
     command: test
     arguments: '-c Release'
     nobuild: true
+    versioningScheme: byBuildNumber
   displayName: 'Test .NET Core Solution'
 
 - task: DotNetCoreCLI@2
