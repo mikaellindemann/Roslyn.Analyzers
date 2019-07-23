@@ -11,6 +11,7 @@ steps:
   inputs:
     command: build
     arguments: "-c Release /p:PackageVersion=$(Build.BuildNumber)"
+    workingDirectory: src
   displayName: 'Build .NET Core Solution'
   
 - task: DotNetCoreCLI@2
@@ -19,11 +20,12 @@ steps:
     arguments: '-c Release'
     nobuild: true
     versioningScheme: byBuildNumber
+    workingDirectory: src
   displayName: 'Test .NET Core Solution'
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/Lindemann.Analyzers/bin/Release/'
+    SourceFolder: '$(Build.SourcesDirectory)/src/Lindemann.Analyzers/bin/Release/'
     Contents: '*$(Build.BuildNumber).nupkg'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy package to staging directory.'
