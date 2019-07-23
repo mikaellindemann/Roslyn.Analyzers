@@ -7,17 +7,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Lindemann.Analyzers</PackageId>
-    <Authors>Mikael Lindemann</Authors>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/mikaellindemann/Roslyn.Analyzers</PackageProjectUrl>
-    <!--<PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
-    <RepositoryUrl>https://github.com/mikaellindemann/Roslyn.Analyzers</RepositoryUrl>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Description>Contains simple analyzers that I didn't find in FxCopAnalyzers and Roslynator.</Description>
-    <PackageReleaseNotes>Added the array creation to params parameter analyzer and code fix to remove redundant code.</PackageReleaseNotes>
-    <Copyright>(c) 2019 Mikael Lindemann</Copyright>
-    <PackageTags>Lindemann.Analyzers, analyzers</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
   </PropertyGroup>
 
