@@ -17,10 +17,15 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: test
-    arguments: '-c Release /p:PackageVersion=$(Build.BuildNumber)'
-    nobuild: true
+    arguments: '--no-build -c Release /p:PackageVersion=$(Build.BuildNumber) /p:CoverletOutput=$(Build.SourcesDirectory)/CodeCoverage/'
     workingDirectory: src
   displayName: 'Test .NET Core Solution'
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/coverage.cobertura.xml'
 
 - task: CopyFiles@2
   inputs:
