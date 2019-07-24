@@ -135,4 +135,22 @@
   <data name="MD0002AnalyzerTitle" xml:space="preserve">
     <value>Simplify implicitly typed array creation in params parameter</value>
   </data>
+  <data name="MD0010AnalyzerDescription" xml:space="preserve">
+    <value>TryGetValue with discarding value can be replaced by Contains.</value>
+  </data>
+  <data name="MD0010AnalyzerMessageFormat" xml:space="preserve">
+    <value>Replace '{0}' with '{1}'</value>
+  </data>
+  <data name="MD0010AnalyzerTitle" xml:space="preserve">
+    <value>Replace TryGetValue with Contains</value>
+  </data>
+  <data name="MD0011AnalyzerDescription" xml:space="preserve">
+    <value>TryGetValue with discarding value can be replaced by ContainsKey.</value>
+  </data>
+  <data name="MD0011AnalyzerMessageFormat" xml:space="preserve">
+    <value>Replace '{0}' with '{1}'</value>
+  </data>
+  <data name="MD0011AnalyzerTitle" xml:space="preserve">
+    <value>Replace TryGetValue with ContainsKey</value>
+  </data>
 </root>

@@ -13,6 +13,7 @@
     <tags>Lindemann.Analyzers analyzers</tags>
     <developmentDependency>true</developmentDependency>
     <repository type="git" url="https://github.com/mikaellindemann/Roslyn.Analyzers.git" />
+    <releaseNotes>Added analyzers to suggest the usage of Contains or ContainsKey over TryGetValue when value is discarded.</releaseNotes>
   </metadata>
   <files>
     <file src="bin\$configuration$\netstandard2.0\Lindemann.Analyzers.dll" target="analyzers\dotnet\cs" />

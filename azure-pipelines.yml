@@ -1,4 +1,4 @@
-name: 0.1$(Rev:.r)
+name: 0.2$(Rev:.r)
 
 trigger:
 - master
@@ -24,9 +24,10 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    contents: 'src/Lindemann.Analyzers/bin/Release/*.nupkg'
+    contents: 'src/Lindemann.Analyzers/bin/Release/*$(Build.BuildNumber).nupkg'
     flattenFolders: true
     targetFolder: $(Build.ArtifactStagingDirectory)
+  displayName: 'Copy package to staging directory.'
 
 - task: PublishBuildArtifacts@1
   inputs:

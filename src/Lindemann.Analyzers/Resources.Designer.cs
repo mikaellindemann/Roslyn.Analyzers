@@ -113,5 +113,59 @@ namespace Lindemann.Analyzers {
                 return ResourceManager.GetString("MD0002AnalyzerTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TryGetValue with discarding value can be replaced by Contains..
+        /// </summary>
+        public static string MD0010AnalyzerDescription {
+            get {
+                return ResourceManager.GetString("MD0010AnalyzerDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace &apos;{0}&apos; with &apos;{1}&apos;.
+        /// </summary>
+        public static string MD0010AnalyzerMessageFormat {
+            get {
+                return ResourceManager.GetString("MD0010AnalyzerMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace TryGetValue with Contains.
+        /// </summary>
+        public static string MD0010AnalyzerTitle {
+            get {
+                return ResourceManager.GetString("MD0010AnalyzerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TryGetValue with discarding value can be replaced by ContainsKey..
+        /// </summary>
+        public static string MD0011AnalyzerDescription {
+            get {
+                return ResourceManager.GetString("MD0011AnalyzerDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace &apos;{0}&apos; with &apos;{1}&apos;.
+        /// </summary>
+        public static string MD0011AnalyzerMessageFormat {
+            get {
+                return ResourceManager.GetString("MD0011AnalyzerMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace TryGetValue with ContainsKey.
+        /// </summary>
+        public static string MD0011AnalyzerTitle {
+            get {
+                return ResourceManager.GetString("MD0011AnalyzerTitle", resourceCulture);
+            }
+        }
     }
 }
