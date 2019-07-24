@@ -8,6 +8,8 @@
 
   <PropertyGroup>
     <NoPackageAnalysis>true</NoPackageAnalysis>
+    <NuspecFile>Lindemann.Analyzers.nuspec</NuspecFile>
+    <NuspecProperties>version=$(PackageVersion);configuration=$(Configuration)</NuspecProperties>
   </PropertyGroup>
 
   <ItemGroup>
