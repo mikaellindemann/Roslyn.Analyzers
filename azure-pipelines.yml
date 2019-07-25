@@ -7,6 +7,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 2.2.x
+
 - task: DotNetCoreCLI@2
   inputs:
     command: build
@@ -26,6 +32,7 @@ steps:
   inputs:
     codeCoverageTool: Cobertura
     summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/coverage.cobertura.xml'
+  condition: succeededOrFailed()
 
 - task: CopyFiles@2
   inputs:
