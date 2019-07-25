@@ -7,9 +7,9 @@ namespace Lindemann.Analyzers
 {
     public abstract class ParamsParametersAnalyzerBase : DiagnosticAnalyzer
     {
-        protected bool IsCallingParamsConstructor(SemanticModel semanticModel, SyntaxNode sn, CancellationToken ct)
+        protected bool IsCallingParamsConstructor(SemanticModel semanticModel, ExpressionSyntax es, CancellationToken ct)
         {
-            if (!(sn.Parent is ArgumentSyntax arg))
+            if (!(es.Parent is ArgumentSyntax arg))
             {
                 return false;
             }
@@ -36,7 +36,13 @@ namespace Lindemann.Analyzers
                 return false;
             }
 
-            if (!calledConstructor.Parameters[paramIndex].IsParams)
+            var parameter = calledConstructor.Parameters[paramIndex];
+            if (!parameter.IsParams)
+            {
+                return false;
+            }
+
+            if (!Equals(parameter.Type, semanticModel.GetTypeInfo(es).Type))
             {
                 return false;
             }
@@ -44,9 +50,9 @@ namespace Lindemann.Analyzers
             return true;
         }
 
-        protected bool IsCallingParamsMethod(SemanticModel semanticModel, SyntaxNode sn, CancellationToken ct)
+        protected bool IsCallingParamsMethod(SemanticModel semanticModel, ExpressionSyntax es, CancellationToken ct)
         {
-            if (!(sn.Parent is ArgumentSyntax arg))
+            if (!(es.Parent is ArgumentSyntax arg))
             {
                 return false;
             }
@@ -73,7 +79,13 @@ namespace Lindemann.Analyzers
                 return false;
             }
 
-            if (!calledMethod.Parameters[paramIndex].IsParams)
+            var parameter = calledMethod.Parameters[paramIndex];
+            if (!parameter.IsParams)
+            {
+                return false;
+            }
+
+            if (!Equals(parameter.Type, semanticModel.GetTypeInfo(es).Type))
             {
                 return false;
             }
