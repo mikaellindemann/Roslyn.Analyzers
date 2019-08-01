@@ -527,3 +527,4 @@ MigrationBackup/
 # End of https://www.gitignore.io/api/git,csharp,visualstudio
 
 .vscode/
+*.cobertura.xml
