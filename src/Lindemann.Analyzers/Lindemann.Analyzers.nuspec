@@ -14,10 +14,13 @@
     <developmentDependency>true</developmentDependency>
     <repository type="git" url="https://github.com/mikaellindemann/Roslyn.Analyzers.git" />
     <releaseNotes>
-      Fixed issue in MD000X that would falsely report that an array initialization was redundant, when the types didn't match.
+* Fixed issue in MD001X that would cause the analyzer report a warning that it crashed on valid syntax.
+  * Added test case to expose the behaviour in this case so it shouldn't happen again.
 
-      Previous:
-      Added analyzers to suggest the usage of Contains or ContainsKey over TryGetValue when value is discarded.
+Previous:
+
+* Fixed issue in MD000X that would falsely report that an array initialization was redundant, when the types didn't match.
+* Added analyzers to suggest the usage of Contains or ContainsKey over TryGetValue when value is discarded.
     </releaseNotes>
   </metadata>
   <files>
