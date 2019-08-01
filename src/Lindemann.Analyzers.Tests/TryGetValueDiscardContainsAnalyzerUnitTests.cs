@@ -21,6 +21,9 @@ namespace Lindemann.Analyzers.Tests
         [Theory]
         [InlineData("")]
         [InlineData(HashSetViolationFixed)]
+        [InlineData(DiscardTupleAssignment)]
+        [InlineData(NotDiscarding)]
+        [InlineData(NotTryGetValue)]
         public void WhenTestCodeIsValidNoDiagnosticIsTriggered(string testCode)
         {
             VerifyCSharpDiagnostic(testCode);
@@ -93,5 +96,75 @@ namespace Lindemann.Analyzers.Violations
     }
 }
 ";
+
+        private const string DiscardTupleAssignment = @"
+namespace Lindemann.Analyzers.Violations
+{
+    internal static class Program
+    {
+        private static void Main()
+        {
+            var (a, _) = Stuffs();
+
+            (var b, var _) = Stuffs();
+
+            System.Console.WriteLine(a);
+            System.Console.WriteLine(b);
+        }
+
+        private static (int a, int b) Stuffs()
+        {
+            return (4, 3);
+        }
+    }
+}
+";
+
+        private const string NotDiscarding = @"
+namespace Lindemann.Analyzers.Violations
+{
+    internal static class Program
+    {
+        private static void Main()
+        {
+            int b = 5;
+
+            if (TryStuffs(b, out b))
+            {
+                System.Console.WriteLine(b);
+            }
+        }
+
+        private static bool TryStuffs(int a, out int b)
+        {
+            b = a;
+            return a != 0;
+        }
+    }
+}
+";
+
+        private const string NotTryGetValue = @"
+namespace Lindemann.Analyzers.Violations
+{
+    internal static class Program
+    {
+        private static void Main()
+        {
+            const int b = 5;
+
+            if (Program.TryStuffs(b, out var _))
+            {
+                System.Console.WriteLine(b);
+            }
+        }
+
+        private static bool TryStuffs(int a, out int b)
+        {
+            b = a;
+            return a != 0;
+        }
+    }
+}";
     }
 }

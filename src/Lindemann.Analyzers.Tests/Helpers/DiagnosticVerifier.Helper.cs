@@ -148,6 +148,7 @@ namespace Lindemann.Analyzers.Tests.Helpers
 
             var projectId = ProjectId.CreateNewId(debugName: TestProjectName);
 
+#pragma warning disable IDE0067
             var solution = new AdhocWorkspace()
                 .CurrentSolution
                 .AddProject(projectId, TestProjectName, TestProjectName, language)
@@ -157,6 +158,7 @@ namespace Lindemann.Analyzers.Tests.Helpers
                 .AddMetadataReference(projectId, SystemCoreReference)
                 .AddMetadataReference(projectId, CSharpSymbolsReference)
                 .AddMetadataReference(projectId, CodeAnalysisReference);
+#pragma warning restore IDE0067
 
             int count = 0;
             foreach (var source in sources)

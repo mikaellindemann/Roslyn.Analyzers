@@ -59,7 +59,7 @@ namespace Lindemann.Analyzers
                 return;
             }
 
-            if (!argS.ChildTokens().First().IsKind(SyntaxKind.OutKeyword))
+            if (!argS.ChildTokens().FirstOrDefault().IsKind(SyntaxKind.OutKeyword))
             {
                 return;
             }
@@ -74,7 +74,7 @@ namespace Lindemann.Analyzers
                 return;
             }
 
-            if (!(ies.ChildNodes().First() is MemberAccessExpressionSyntax maes) || !maes.IsKind(SyntaxKind.SimpleMemberAccessExpression))
+            if (!(ies.ChildNodes().FirstOrDefault() is MemberAccessExpressionSyntax maes) || !maes.IsKind(SyntaxKind.SimpleMemberAccessExpression))
             {
                 return;
             }

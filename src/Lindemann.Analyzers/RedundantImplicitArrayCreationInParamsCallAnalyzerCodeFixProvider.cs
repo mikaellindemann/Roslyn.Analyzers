@@ -33,21 +33,20 @@ namespace Lindemann.Analyzers
             var diagnostic = context.Diagnostics.First();
             var diagnosticSpan = diagnostic.Location.SourceSpan;
 
-            // Find the type declaration identified by the diagnostic.
-            var declaration = root.FindToken(diagnosticSpan.Start).Parent.AncestorsAndSelf().OfType<ExpressionSyntax>().First();
+            var newArray = root.FindToken(diagnosticSpan.Start).Parent.AncestorsAndSelf().OfType<ImplicitArrayCreationExpressionSyntax>().First();
 
             // Register a code action that will invoke the fix.
             context.RegisterCodeFix(
                 CodeAction.Create(
                     title: title,
-                    createChangedDocument: c => SimplifyParamsParametersAsync(context.Document, declaration, c),
+                    createChangedDocument: c => SimplifyParamsParametersAsync(context.Document, newArray, c),
                     equivalenceKey: title),
                 diagnostic);
         }
 
         private async Task<Document> SimplifyParamsParametersAsync(
             Document document,
-            ExpressionSyntax newArray,
+            ImplicitArrayCreationExpressionSyntax newArray,
             CancellationToken cancellationToken)
         {
             var arg = (ArgumentSyntax)newArray.Parent;
@@ -55,14 +54,9 @@ namespace Lindemann.Analyzers
 
             var argListWithoutParamsArray = argList.Arguments.Remove(arg);
 
-            if (!(newArray is ImplicitArrayCreationExpressionSyntax iaces))
-            {
-                throw new ArgumentException("invalid type of array creation expression.", nameof(newArray));
-            }
-
             ArgumentListSyntax resultingArgs = SyntaxFactory.ArgumentList(
                 argListWithoutParamsArray
-                    .AddRange(iaces.Initializer.Expressions.Select(SyntaxFactory.Argument)));
+                    .AddRange(newArray.Initializer.Expressions.Select(SyntaxFactory.Argument)));
 
             // Replace the old local declaration with the new local declaration.
             var oldRoot = await document.GetSyntaxRootAsync(cancellationToken);
